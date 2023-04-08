@@ -13,6 +13,7 @@ String user_phoneNumber=request.getParameter("user_phoneNumber");
 <title></title>
 </head>
 <body>
+	<h2>회원가입 정보</h2>
 	아이디 : <%=user_id %>
 	<br/>
 	패스워드 : <%=user_pw %>
