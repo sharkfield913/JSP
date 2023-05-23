@@ -1,0 +1,37 @@
+create table member(
+    mId varchar2(20) primary key,
+    mPwd varchar2(20) not null,
+    mNickname varchar2(20) not null,
+    mName varchar2(40) not null,
+    mAddress varchar2(100) not null,
+    mPhone varchar2(100) not null,
+    mEmail varchar2(20) not null,
+    mGrade varchar2(10) not null,
+    mRegedate date default sysdate not null);
+
+create table product (
+    pId number primary key,
+    pName varchar2(200) not null,
+    pPrice varchar2(2000) not null,
+    pStock varchar2(10) not null, 
+    pRegedate date default sysdate not null,
+    pSell number(6) not null);
+
+create table cart(
+    cNum number(8) primary key,
+    cId varchar2(20) not null,
+    pId number(5) not null,
+    quantity number(5) default 1,
+    constraint fk_cId foreign key(mId) references member(mId),
+    constraint fk_pId foreign key(pId) references product(pId));
+
+create table orders(
+    oNum number(10) primary key,
+    oId varchar2(20),
+    indate date default sysdate,
+   constraint fk_oId foreign key(oId) references member(mId));
+    
+create sequence orders_seq start with 1 increment by 1;
+    
+
+commit;
